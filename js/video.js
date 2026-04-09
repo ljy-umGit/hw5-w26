@@ -1,14 +1,21 @@
-let video = document.getElementById("player1").querySelector(".video");
-let volume = document.getElementById("slider");
-let volume_txt = document.getElementById("volume");
+// Global Variable
+const video = document.getElementById("player1");
 
-const play_btn = document.getElementById("play");
-const pause_btn = document.getElementById("pause");
-const slower_btn = document.getElementById("slower");
-const faster_btn = document.getElementById("faster");
-const skip_btn = document.getElementById("skip");
-const vintage_btn = document.getElementById("vintage");
-const orig_btn = document.getElementById("original");
+// Basic Controls
+const playBtn = document.getElementById("play");
+const pauseBtn = document.getElementById("pause");
+const volumeSlider = document.getElementById("slider");
+const volumeTxt = document.getElementById("volume");
+const muteBtn = document.getElementById("mute");
+
+// Advanced Controls
+const slowerBtn = document.getElementById("slower");
+const fasterBtn = document.getElementById("faster");
+const skipBtn = document.getElementById("skip");
+
+// Style Controls
+const vintageBtn = document.getElementById("vintage");
+const origBtn = document.getElementById("orig");
 
 window.addEventListener("load", function() {
 	console.log("Good job opening the window");
@@ -16,35 +23,37 @@ window.addEventListener("load", function() {
 	video.loop = false;
 	video.pause();
 	video.currentTime = 0;
-	video.volume = 0.5;
-	video.defaultplaybackrate = 1.0;
+	video.volume = 1;
+	video.volumeSlider.value = 100;
+	volumeTxt.textContent = "100%";
+	video.playbackRate = 1.0;
 	video.controls = false;
 });
 
-play_btn.addEventListener("click", function(){
+playBtn.addEventListener("click", function(){
 	video.play();
 })
 
-pause_btn.addEventListener("click", function(){
+pauseBtn.addEventListener("click", function(){
 	video.pause();
 })
 
-volume.addEventListener("input", function(){
-	video.volume = volume.value / 100;
-	volume_txt.textContent = volume.value + "%";
+volumeSlider.addEventListener("input", function(){
+	video.volume = volumeSlider.value / 100;
+	volumeTxt.textContent = volumeSlider.value + "%";
 })
 
-slower_btn.addEventListener("click", function(){
+slowerBtn.addEventListener("click", function(){
 	video.playbackRate -= 0.1;
 	console.log(`Playback slowed by 10%, current speed is ${video.playbackRate*100}%`)
 })
 
-faster_btn.addEventListener("click", function(){
+fasterBtn.addEventListener("click", function(){
 	video.playbackRate += 0.1;
 	console.log(`Playback accelerated by 10%, current speed is ${video.playbackRate*100}%`)
 })
 
-skip_btn.addEventListener("click", function(){
+skipBtn.addEventListener("click", function(){
 	if (video.currentTime >= video.duration){
 		video.currentTime = 0;
 	} else {
@@ -53,11 +62,11 @@ skip_btn.addEventListener("click", function(){
 	console.log(`Current playback location is ${video.currentTime}s`)
 })
 
-vintage_btn.addEventListener("click", function(){
+vintageBtn.addEventListener("click", function(){
 	video.classList.add("oldSchool")
 })
 
-orig_btn.addEventListener("click", function(){
+origBtn.addEventListener("click", function(){
 	video.classList.remove("oldSchool")
 })
 // document.querySelector("#play").addEventListener("click", function() {
