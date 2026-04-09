@@ -24,7 +24,7 @@ window.addEventListener("load", function() {
 	video.pause();
 	video.currentTime = 0;
 	video.volume = 1;
-	video.volumeSlider.value = 100;
+	volumeSlider.value = 100;
 	volumeTxt.textContent = "100%";
 	video.playbackRate = 1.0;
 	video.controls = false;
