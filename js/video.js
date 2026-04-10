@@ -41,12 +41,23 @@ pauseBtn.addEventListener("click", function(){
 volumeSlider.addEventListener("input", function(){
 	video.volume = volumeSlider.value / 100;
 	volumeTxt.textContent = volumeSlider.value + "%";
+	video.muted = (volumeSlider.value === 0);
 })
 
+let previousVolume = Number(volumeSlider.value)
+
 muteBtn.addEventListener("click", function(){
-	video.volume = 0;
-	volumeSlider.value = 0
-	volumeTxt.textContent = "0%";
+	video.muted = !video.muted;
+
+	if (video.muted){
+		previousVolume = Number(volumeSlider.value)
+		volumeSlider.value = 0;
+		volumeTxt.textContent = "0%";
+	} else {
+		volumeSlider.value = previousVolume;
+		video.volume = previousVolume / 100;
+		volumeTxt.textContent = previousVolume + "%";
+	}
 })
 
 slowerBtn.addEventListener("click", function(){
