@@ -27,14 +27,12 @@ window.addEventListener("load", function() {
 	video.controls = false;
 	video.volume = 1;
 	volumeSlider.value = 100;
-	volumeTxt.textContent = "100%";
 });
 
 playBtn.addEventListener("click", function(){
 	video.play();
-	video.volume = 1;
-	volumeSlider.value = 100;
-	volumeTxt.textContent = "100%";
+	volumeSlider.value = volumeSlider.value / 100;
+	volumeTxt.textContent = volumeSlider.value +"%";
 })
 
 pauseBtn.addEventListener("click", function(){
