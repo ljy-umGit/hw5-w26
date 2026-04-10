@@ -25,13 +25,16 @@ window.addEventListener("load", function() {
 	video.currentTime = 0;
 	video.playbackRate = 1.0;
 	video.controls = false;
+	video.volume = 1;
+	volumeSlider.value = 100;
+	volumeTxt.textContent = "100%";
 });
 
 playBtn.addEventListener("click", function(){
 	video.play();
-	video.volume = 0.8;
-	volumeSlider.value = 80;
-	volumeTxt.textContent = "80%";
+	video.volume = 1;
+	volumeSlider.value = 100;
+	volumeTxt.textContent = "100%";
 })
 
 pauseBtn.addEventListener("click", function(){
@@ -41,7 +44,6 @@ pauseBtn.addEventListener("click", function(){
 volumeSlider.addEventListener("input", function(){
 	video.volume = volumeSlider.value / 100;
 	volumeTxt.textContent = volumeSlider.value + "%";
-	video.muted = (volumeSlider.value === "0");
 })
 
 let previousVolume = Number(volumeSlider.value)
@@ -53,12 +55,12 @@ muteBtn.addEventListener("click", function(){
 		previousVolume = Number(volumeSlider.value)
 		volumeSlider.value = 0;
 		volumeTxt.textContent = "0%";
-		muteBtn.textContent = "unmute"
+		muteBtn.textContent = "Unmute"
 	} else {
 		volumeSlider.value = previousVolume;
 		video.volume = previousVolume / 100;
 		volumeTxt.textContent = previousVolume + "%";
-		muteBtn.textContent = "mute"
+		muteBtn.textContent = "Mute"
 	}
 })
 
