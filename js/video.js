@@ -25,13 +25,13 @@ window.addEventListener("load", function() {
 	video.currentTime = 0;
 	video.playbackRate = 1.0;
 	video.controls = false;
-	video.volume = 1;
-	volumeSlider.value = 100;
+	video.volume = volumeSlider.value / 100;
+	volumeTxt.textContent = volumeSlider.value + "%";
 });
 
 playBtn.addEventListener("click", function(){
 	video.play();
-	volumeSlider.value = volumeSlider.value / 100;
+	video.volume = volumeSlider.value / 100;
 	volumeTxt.textContent = volumeSlider.value +"%";
 })
 
