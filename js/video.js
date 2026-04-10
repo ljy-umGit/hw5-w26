@@ -43,6 +43,12 @@ volumeSlider.addEventListener("input", function(){
 	volumeTxt.textContent = volumeSlider.value + "%";
 })
 
+muteBtn.addEventListener("click", function(){
+	video.volume = 0;
+	volumeSlider.value = 0
+	volumeTxt.textContent = "0%";
+})
+
 slowerBtn.addEventListener("click", function(){
 	video.playbackRate -= 0.1;
 	console.log(`Playback slowed by 10%, current speed is ${video.playbackRate*100}%`)
